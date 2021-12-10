@@ -5,6 +5,10 @@ from schemas.pelicula import Pelicula
 
 pelicula = APIRouter()
 
+@pelicula.get("/", tags=["Pelicula"])
+def get_peliculas():
+    return conn.execute(peliculas.select()).fetchall()
+
 @pelicula.get("/peliculas", tags=["Pelicula"])
 def get_peliculas():
     return conn.execute(peliculas.select()).fetchall()
